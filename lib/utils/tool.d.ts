@@ -1,0 +1,13 @@
+export declare const isRegExp: (o: any) => o is RegExp;
+export declare const isNull: (o: any) => o is null;
+export declare const isObject: (o: any) => o is Object;
+export declare const isBoolean: (o: any) => o is Boolean;
+export declare const isNumber: (o: any) => o is Number;
+export declare const isUndefined: (o: any) => o is undefined;
+export declare const isFunction: (o: any) => o is Function;
+export declare const isString: (o: any) => o is String;
+export declare const isPromise: (o: any) => o is Promise<any>;
+export declare const isArray: (o: any) => o is any[];
+export declare const isDate: (o: any) => o is Date;
+export declare const isDocument: (o: any) => o is HTMLDocument;
+export declare const isError: (o: any) => o is Error;

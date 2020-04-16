@@ -1,0 +1,29 @@
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "nodemon",
+      "runtimeExecutable": "nodemon",
+      "args": ["${workspaceRoot}/node_modules/.bin/webpack"],
+      "restart": true,
+      "protocol": "inspector", //相当于--inspect了
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "runtimeArgs": [
+        //对应nodemon --inspect之后除了启动文件之外的其他配置
+        "--config",
+        "../example/webpack.config.js"
+        // "--exec",
+        // "babel-node",
+        // "--presets",
+        // "env"
+      ]
+    }
+  ]
+}
