@@ -26,7 +26,10 @@ class DefineConfigPlugin {
   }
 
   apply(compiler: webpack.Compiler) {
-    compiler.hooks.run.tapPromise(pluginName, async (compiler) => {
+    compiler.hooks.run.tapPromise(pluginName, async () => {
+      await this.init(compiler)
+    })
+    compiler.hooks.watchRun.tapPromise(pluginName, async (compiler) => {
       await this.init(compiler)
     })
   }
@@ -43,7 +46,10 @@ class DefineConfigPlugin {
 
     this.handleGenerateFiles(data)
 
-    new DefinePlugin({ [__KEY__]: JSON.stringify(data) }).apply(compiler)
+
+    new webpack.DefinePlugin({ [__KEY__]: JSON.stringify(data) }).apply(
+      compiler
+    )
   }
   /**
    * @description 生成 global.d.ts 和 config.ts
