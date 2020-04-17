@@ -36,7 +36,6 @@ class DefineConfigPlugin {
   private async init(compiler: webpack.Compiler) {
     const { __KEY__ }: any = this
     const data: Object = await this.readConfigFile()
-    console.log(data, '===data')
 
     this.handleGenerateFiles(data)
 

@@ -18,7 +18,7 @@ const banner = `/*!
  * Released under the MIT License.
  */`
 
- 
+
 const BaseConfig = {
   input: resolve('./src/index.ts'),
   output: [
@@ -33,7 +33,7 @@ const BaseConfig = {
       banner,
     },
   ],
-  external: ['webpack', 'path', 'fs'],
+  external: ['webpack', 'fs'],
   plugins: [
     JsonPlugin(),
     CommonPlugin(),

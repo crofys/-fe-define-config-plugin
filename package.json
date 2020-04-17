@@ -1,6 +1,6 @@
 {
-  "name": "define-config-plugin",
-  "version": "0.1.0",
+  "name": "@crofys/define-config-plugin",
+  "version": "1.0.0",
   "description": "webpack自动将项目下config文件注入到项目中到的插件",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
@@ -16,6 +16,7 @@
     "config"
   ],
   "author": "xuchangjian",
+  "git repository": "https://github.com/crofys/define-config-plugin",
   "license": "ISC",
   "engines": {
     "node": ">=10.0.0"
@@ -34,13 +35,10 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.6.1",
     "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-polyfills": "^0.2.1",
     "rollup-plugin-sourcemaps": "^0.5.0",
     "rollup-plugin-terser": "^5.3.0",
     "rollup-plugin-typescript2": "^0.27.0",
-    "rollup-plugin-uglify": "^6.0.4",
-    "rollup-plugin-uglify-es": "0.0.1",
     "shelljs": "^0.8.3",
     "typescript": "^3.8.3"
   },

@@ -15,26 +15,26 @@ const questions = [
     type: 'list',
     name: 'commitType',
     message: '选择描述',
-    choices: ['feat', 'fix', 'improve', 'docs', 'style', 'chore', 'test']
+    choices: ['feat', 'fix', 'improve', 'docs', 'style', 'chore', 'test'],
   },
   {
     type: 'input',
     name: 'commit',
     message: '备注信息',
-    validate: function(val) {
+    validate: function (val) {
       if (!val) {
         return '模板名称不为空'
       } else {
         return true
       }
-    }
+    },
   },
   {
     type: 'list',
     name: 'version',
     message: '选择版本',
-    choices: ['小版本', '中版本', '大版本', '开发版']
-  }
+    choices: ['小版本', '中版本', '大版本', '开发版'],
+  },
 ]
 
 start()
@@ -42,29 +42,29 @@ async function start() {
   const { version, commit, commitType } = await prompt(questions)
 
   console.log('拉取代码')
-  exec('git pull')
+  exec('git pull', { async: false })
 
   console.log('提交代码')
-  exec('git add .')
+  exec('git add .', { async: false })
 
   console.log('备注信息')
-  exec(`git commit -am ${commitType}:${commit}`)
+  exec(`git commit -am ${commitType}:${commit}`, { async: false })
 
   switch (version) {
     case '小版本':
-      exec('npm version patch')
+      exec('npm version patch', { async: false })
       break
     case '中版本':
-      exec('npm version minor')
+      exec('npm version minor', { async: false })
       break
     case '大版本':
-      exec('npm version major')
+      exec('npm version major', { async: false })
       break
     case '开发版':
-      exec('npm version premajor')
+      exec('npm version premajor', { async: false })
       break
   }
 
   console.log('推到远程')
-  exec('git push')
+  exec('git push', { async: false })
 }
