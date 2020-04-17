@@ -1,6 +1,6 @@
 {
   "name": "@crofys/define-config-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "webpack自动将项目下config文件注入到项目中到的插件",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
