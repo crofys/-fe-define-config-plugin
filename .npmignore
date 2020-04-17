@@ -2,6 +2,7 @@ example
 .vscode
 src
 .babelrc
+node_modules
 rollup.config.ts
 
 npm-debug.log*
