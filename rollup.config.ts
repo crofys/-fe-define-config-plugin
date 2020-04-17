@@ -4,7 +4,8 @@ import ResolvePlugin from '@rollup/plugin-node-resolve'
 import TsPlugin from 'rollup-plugin-typescript2'
 import PolyfillPlugin from 'rollup-plugin-node-polyfills'
 import BabelPlugin from 'rollup-plugin-babel'
-import { terser } from "rollup-plugin-terser";
+import builtins from 'rollup-plugin-node-builtins'
+import { terser } from 'rollup-plugin-terser'
 import path from 'path'
 import Pkg from './package.json'
 
@@ -17,7 +18,6 @@ const banner = `/*!
  * https://github.com/any86/any-touch
  * Released under the MIT License.
  */`
-
 
 const BaseConfig = {
   input: resolve('./src/index.ts'),
@@ -35,10 +35,12 @@ const BaseConfig = {
   ],
   external: ['webpack', 'fs'],
   plugins: [
+    builtins(),
     JsonPlugin(),
     CommonPlugin(),
     ResolvePlugin({
       extensions,
+      preferBuiltins: false,
     }),
     TsPlugin({
       tsconfig: 'tsconfig.json',
@@ -48,14 +50,12 @@ const BaseConfig = {
       exclude: ['node_modules'],
       runtimeHelpers: true,
     }),
-    terser(),
+    // terser(),
   ],
 }
 
-// if (isProd) {
-//   Object.assign(BaseConfig, {
-//     // plugins: [UglifyPlugin.uglify()],
-//   })
-// }
+if (isProd) {
+  BaseConfig.plugins.push(terser())
+}
 
 export default BaseConfig

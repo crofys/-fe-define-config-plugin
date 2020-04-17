@@ -21,8 +21,6 @@
     "sourceMap": true,
     // 目标文件所在路径
     "outDir": "./lib",
-    // 编译过程中需要引入的库文件的列表
-    "lib": ["dom", "es7"],
     // 额外支持解构/forof等功能
     "downlevelIteration": true,
     // 是否生成声明文件

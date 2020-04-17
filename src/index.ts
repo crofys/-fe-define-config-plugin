@@ -1,6 +1,7 @@
 import webpack from 'webpack'
 import { join } from 'path'
 import { readFileNames, writeFileSync } from './utils/fs'
+import { isObject } from './utils/tool'
 
 const pluginName = 'DefineConfigPlugin'
 const DefinePlugin = webpack.DefinePlugin
@@ -17,6 +18,8 @@ class DefineConfigPlugin {
   private __KEY__: string
 
   constructor(opts: IDefineConfigOpts) {
+    if (!isObject(opts)) throw new Error('请传入参数')
+
     this.__PATH__ = opts.path || join(process.cwd(), './config/')
     this.__ENV__ = opts.env
     this.__KEY__ = opts.key || 'G_CONFIG'
@@ -27,6 +30,7 @@ class DefineConfigPlugin {
       await this.init(compiler)
     })
   }
+
   /**
    * @description 初始化方法
    * @private
