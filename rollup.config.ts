@@ -4,13 +4,13 @@ import ResolvePlugin from '@rollup/plugin-node-resolve'
 import TsPlugin from 'rollup-plugin-typescript2'
 import PolyfillPlugin from 'rollup-plugin-node-polyfills'
 import BabelPlugin from 'rollup-plugin-babel'
+import { terser } from "rollup-plugin-terser";
 import path from 'path'
 import Pkg from './package.json'
-import { RollupOptions } from 'rollup'
 
+const isProd = process.env.NODE_ENV === 'production'
 const extensions = ['.js', '.ts']
-const resolve = (...args)=> path.resolve(__dirname,...args)
-
+const resolve = (...args) => path.resolve(__dirname, ...args)
 const banner = `/*!
  * ${Pkg.name} v${Pkg.version}
  * (c) 2020-${new Date().getFullYear()} Russell
@@ -18,6 +18,7 @@ const banner = `/*!
  * Released under the MIT License.
  */`
 
+ 
 const BaseConfig = {
   input: resolve('./src/index.ts'),
   output: [
@@ -44,8 +45,17 @@ const BaseConfig = {
     }),
     PolyfillPlugin(),
     BabelPlugin({
-      "exclude": ["node_modules"],
+      exclude: ['node_modules'],
+      runtimeHelpers: true,
     }),
+    terser(),
   ],
 }
+
+// if (isProd) {
+//   Object.assign(BaseConfig, {
+//     // plugins: [UglifyPlugin.uglify()],
+//   })
+// }
+
 export default BaseConfig
